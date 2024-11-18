@@ -3,4 +3,4 @@ openai
 joblib
 pandas
 matplotlib
-sklearn
+scikit-learn
