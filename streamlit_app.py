@@ -14,7 +14,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error,r2_score, me
 
 
 # Show title and description.
-st.title("Trabajo final Grupo 6")
+st.title("Trabajo Final Grupo 6")
 st.write(
     "Esta página hace predicciones de probabilidad de ocurrencia de accidentes de tránsito mediante modelos de Machine Learning DecisionTreeRegressor y RandomForestRegressor"
 )
