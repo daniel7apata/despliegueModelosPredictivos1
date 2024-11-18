@@ -1,2 +1,9 @@
 streamlit
 openai
+joblib
+pandas
+matplotlib.pyplot
+sklearn.preprocessing
+sklearn.model_selection
+sklearn.linear_model
+sklearn.metrics
