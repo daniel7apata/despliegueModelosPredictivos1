@@ -16,6 +16,11 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error,r2_score, me
 # Cargar los modelos serializados
 best_model_tree = joblib.load('best_model_tree.pkl')
 best_model_rf = joblib.load('best_model_rf.pkl')
+#Cargar conjunto de datos test
+df_test = pd.read_pickle('/content/df_final_tablon_completo_test_encoded.pickle')
+
+
+
 
 # Show title and description.
 st.title("📄 Document question answering")
