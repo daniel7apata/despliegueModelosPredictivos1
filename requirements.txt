@@ -2,7 +2,5 @@ streamlit
 openai
 joblib
 pandas
-sklearn.preprocessing
-sklearn.model_selection
-sklearn.linear_model
-sklearn.metrics
+matplotlib
+sklearn
