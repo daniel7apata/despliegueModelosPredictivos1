@@ -26,16 +26,10 @@ uploaded_file = st.file_uploader(
 )
 
 
+#procesamiento de archivos subidos
 if uploaded_file and question:
-
-    # Process the uploaded file and question.
     document = uploaded_file.read().decode()
-    messages = [
-        {
-            "role": "user",
-            "content": f"Here's a document: {document} \n\n---\n\n {question}",
-        }
-    ]
+
 
 
 
