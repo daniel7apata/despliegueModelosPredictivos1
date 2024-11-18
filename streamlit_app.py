@@ -18,8 +18,15 @@ best_model_tree = joblib.load('best_model_tree.pkl')
 best_model_rf = joblib.load('best_model_rf.pkl')
 #Cargar conjunto de datos test
 df_test = pd.read_pickle('df_final_tablon_completo_test_encoded.pickle')
-
-
+#Separar features de target
+X_test = df_test.drop(columns='target_total_mes_accidentes')
+y_test = df_test['target_total_mes_accidentes']
+#Realizar prediccion
+tree_prediction = best_model_tree.predict(X_test)
+rf_prediction = best_model_rf.predict(X_test)
+#Mostrar prediccion
+st.write("Predicción con DecisionTreeRegressor:", tree_prediction)
+st.write("Predicción con RandomForestRegressor:", rf_prediction)
 
 
 # Show title and description.
