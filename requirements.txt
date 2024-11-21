@@ -1,6 +1,9 @@
 streamlit
-openai
-joblib
+requests
+bs4
 pandas
-matplotlib
+chardet
+openpyxl
 scikit-learn
+joblib
+matplotlib
