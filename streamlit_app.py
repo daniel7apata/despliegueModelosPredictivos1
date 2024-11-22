@@ -23,7 +23,7 @@ st.write(
 
 
 # Subida de archivo
-uploaded_file = st.file_uploader("Sube un archivo CSV o XLSX", type=["csv", "xlsx"])
+uploaded_file = st.file_uploader("Sube un archivo CSV, XLSX, PICKLE", type=["csv", "xlsx", ".pickle"])
 
 if uploaded_file is not None:
     try:
