@@ -161,7 +161,7 @@ if uploaded_file is not None:
  
         df_metricas = pd.DataFrame({
             'Modelo': ['DecisionTreeRegressor', 'Optimizado_DecisionTreeRegressor', 'RandomForestRegressor', 'Optimizado_RandomForestRegressor'],
-            'MAE': [mean_absolute_error(la_target, tree_prediction), mean_absolute_error(la_target, best_tree_prediction), mean_absolute_error(la_target, rf_prediction) mean_absolute_error(la_target, best_rf_prediction)],
+            'MAE': [mean_absolute_error(la_target, tree_prediction), mean_absolute_error(la_target, best_tree_prediction), mean_absolute_error(la_target, rf_prediction), mean_absolute_error(la_target, best_rf_prediction)],
             'MSE': [mean_squared_error(la_target, tree_prediction), mean_squared_error(la_target, best_tree_prediction), mean_squared_error(la_target, rf_prediction), mean_squared_error(la_target, best_rf_prediction)],
             'MAPE': [mean_absolute_percentage_error(la_target, tree_prediction), mean_absolute_percentage_error(la_target, best_tree_prediction), mean_absolute_percentage_error(la_target, rf_prediction), mean_absolute_percentage_error(la_target, best_rf_prediction)],
             'RMSE': [mean_squared_error(la_target, tree_prediction, squared=False), mean_squared_error(la_target, best_tree_prediction, squared=False), mean_squared_error(la_target, rf_prediction, squared=False), mean_squared_error(la_target, best_rf_prediction, squared=False)],
