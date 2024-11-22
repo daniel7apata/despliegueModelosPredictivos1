@@ -147,8 +147,8 @@ if uploaded_file is not None:
         df_comparar['target_original'] = la_target
         #df_comparar['LogisticRegression'] = LogisticRegression_prediction
         df_comparar['DecisionTreeRegressor'] = tree_prediction
-        df_comparar['RandomForestRegressor'] = rf_prediction
         df_comparar['Optimizado_DecisionTreeRegressor'] = best_tree_prediction
+        df_comparar['RandomForestRegressor'] = rf_prediction
         df_comparar['Optimizado_RandomForestRegressor'] = best_rf_prediction
 
         
