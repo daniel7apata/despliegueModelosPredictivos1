@@ -29,76 +29,6 @@ if uploaded_file is not None:
     try:
         if uploaded_file.name.endswith(".pickle"):
             df_tablon_completo_test = pd.read_pickle("df_final_tablon_completo_test_encoded.pickle")
-            
-            st.write("Datos transformados")
-            st.dataframe(df_tablon_completo_test)
-            
-            
-            #Traer modelos ya entrenados
-            tree_model = joblib.load('tree_model.pkl')
-            rf_model = joblib.load('rf_model.pkl')
-            #LogisticRegression = joblib.load('LogisticRegression.pkl')
-            
-            best_model_tree = joblib.load('best_model_tree.pkl')
-            best_model_rf = joblib.load('best_model_rf.pkl')        
-            
-            #Separar features de target
-            las_features = df_tablon_completo_test.drop(columns='target_total_mes_accidentes')
-            la_target = df_tablon_completo_test['target_total_mes_accidentes']
-            
-            
-            st.write("Las columnas features")
-            st.dataframe(las_features)
-            
-            st.write("La columna target")
-            st.dataframe(la_target)
-            
-            
-            #Realizar prediccion
-            tree_prediction = tree_model.predict(las_features)
-            rf_prediction = rf_model.predict(las_features)
-            #LogisticRegression_prediction = LogisticRegression.predict(las_features)
-            
-            best_tree_prediction = best_model_tree.predict(las_features)
-            best_rf_prediction = best_model_rf.predict(las_features)
-            
-            
-            
-            #Mostrar predicción
-            
-            df_comparar = pd.DataFrame()
-    
-            df_comparar['target_original'] = la_target
-            #df_comparar['LogisticRegression'] = LogisticRegression_prediction
-            df_comparar['DecisionTreeRegressor'] = tree_prediction
-            df_comparar['Optimizado_DecisionTreeRegressor'] = best_tree_prediction
-            df_comparar['RandomForestRegressor'] = rf_prediction
-            df_comparar['Optimizado_RandomForestRegressor'] = best_rf_prediction
-    
-            
-            
-            st.write("Comparación de predicciones")
-            st.dataframe(df_comparar)
-    
-    
-    
-    
-    
-            st.write("Métricas DecisionTreeRegressor")
-            mae = mean_absolute_error(la_target, tree_prediction)
-            mse = mean_squared_error(la_target, tree_prediction)
-            mape = mean_absolute_percentage_error(la_target, tree_prediction)
-            rmse = mean_squared_error(la_target, tree_prediction, squared=False)
-            r2 = r2_score(la_target, tree_prediction)
-            
-            st.write(f"MAE: {mae}")
-            st.write(f"MSE: {mse}")
-            st.write(f"MAPE: {mape * 100:.2f}%")
-            st.write(f"RMSE: {rmse}")
-            st.write(f"R²: {r2}")
-
-            
-        
         else:
             if uploaded_file.name.endswith(".csv"):
                 # Leer archivo CSV
@@ -175,75 +105,75 @@ if uploaded_file is not None:
             # columna de target bajo el nombre "target_total_mes_accidentes" (*4)
             df_tablon_completo_test = pd.concat([aniomes   , features_one_hot,   features_min_max,  columna_target],axis=1)
             
-            st.write("Datos transformados")
-            st.dataframe(df_tablon_completo_test)
-            
-            
-            #Traer modelos ya entrenados
-            tree_model = joblib.load('tree_model.pkl')
-            rf_model = joblib.load('rf_model.pkl')
-            #LogisticRegression = joblib.load('LogisticRegression.pkl')
-            
-            best_model_tree = joblib.load('best_model_tree.pkl')
-            best_model_rf = joblib.load('best_model_rf.pkl')
-            
-            
-            
-            
-            #Separar features de target
-            las_features = df_tablon_completo_test.drop(columns='target_total_mes_accidentes')
-            la_target = df_tablon_completo_test['target_total_mes_accidentes']
-            
-            
-            st.write("Las columnas features")
-            st.dataframe(las_features)
-            
-            st.write("La columna target")
-            st.dataframe(la_target)
-            
-            
-            #Realizar prediccion
-            tree_prediction = tree_model.predict(las_features)
-            rf_prediction = rf_model.predict(las_features)
-            #LogisticRegression_prediction = LogisticRegression.predict(las_features)
-            
-            best_tree_prediction = best_model_tree.predict(las_features)
-            best_rf_prediction = best_model_rf.predict(las_features)
-            
-            
-            
-            #Mostrar predicción
-            
-            df_comparar = pd.DataFrame()
-    
-            df_comparar['target_original'] = la_target
-            #df_comparar['LogisticRegression'] = LogisticRegression_prediction
-            df_comparar['DecisionTreeRegressor'] = tree_prediction
-            df_comparar['Optimizado_DecisionTreeRegressor'] = best_tree_prediction
-            df_comparar['RandomForestRegressor'] = rf_prediction
-            df_comparar['Optimizado_RandomForestRegressor'] = best_rf_prediction
-    
-            
-            
-            st.write("Comparación de predicciones")
-            st.dataframe(df_comparar)
-    
-    
-    
-    
-    
-            st.write("Métricas DecisionTreeRegressor")
-            mae = mean_absolute_error(la_target, tree_prediction)
-            mse = mean_squared_error(la_target, tree_prediction)
-            mape = mean_absolute_percentage_error(la_target, tree_prediction)
-            rmse = mean_squared_error(la_target, tree_prediction, squared=False)
-            r2 = r2_score(la_target, tree_prediction)
-            
-            st.write(f"MAE: {mae}")
-            st.write(f"MSE: {mse}")
-            st.write(f"MAPE: {mape * 100:.2f}%")
-            st.write(f"RMSE: {rmse}")
-            st.write(f"R²: {r2}")
+        st.write("Datos transformados")
+        st.dataframe(df_tablon_completo_test)
+        
+        
+        #Traer modelos ya entrenados
+        tree_model = joblib.load('tree_model.pkl')
+        rf_model = joblib.load('rf_model.pkl')
+        #LogisticRegression = joblib.load('LogisticRegression.pkl')
+        
+        best_model_tree = joblib.load('best_model_tree.pkl')
+        best_model_rf = joblib.load('best_model_rf.pkl')
+        
+        
+        
+        
+        #Separar features de target
+        las_features = df_tablon_completo_test.drop(columns='target_total_mes_accidentes')
+        la_target = df_tablon_completo_test['target_total_mes_accidentes']
+        
+        
+        st.write("Las columnas features")
+        st.dataframe(las_features)
+        
+        st.write("La columna target")
+        st.dataframe(la_target)
+        
+        
+        #Realizar prediccion
+        tree_prediction = tree_model.predict(las_features)
+        rf_prediction = rf_model.predict(las_features)
+        #LogisticRegression_prediction = LogisticRegression.predict(las_features)
+        
+        best_tree_prediction = best_model_tree.predict(las_features)
+        best_rf_prediction = best_model_rf.predict(las_features)
+        
+        
+        
+        #Mostrar predicción
+        
+        df_comparar = pd.DataFrame()
+
+        df_comparar['target_original'] = la_target
+        #df_comparar['LogisticRegression'] = LogisticRegression_prediction
+        df_comparar['DecisionTreeRegressor'] = tree_prediction
+        df_comparar['Optimizado_DecisionTreeRegressor'] = best_tree_prediction
+        df_comparar['RandomForestRegressor'] = rf_prediction
+        df_comparar['Optimizado_RandomForestRegressor'] = best_rf_prediction
+
+        
+        
+        st.write("Comparación de predicciones")
+        st.dataframe(df_comparar)
+
+
+
+
+
+        st.write("Métricas DecisionTreeRegressor")
+        mae = mean_absolute_error(la_target, tree_prediction)
+        mse = mean_squared_error(la_target, tree_prediction)
+        mape = mean_absolute_percentage_error(la_target, tree_prediction)
+        rmse = mean_squared_error(la_target, tree_prediction, squared=False)
+        r2 = r2_score(la_target, tree_prediction)
+        
+        st.write(f"MAE: {mae}")
+        st.write(f"MSE: {mse}")
+        st.write(f"MAPE: {mape * 100:.2f}%")
+        st.write(f"RMSE: {rmse}")
+        st.write(f"R²: {r2}")
 
 
     except Exception as e:
