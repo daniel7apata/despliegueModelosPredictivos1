@@ -135,8 +135,8 @@ if uploaded_file is not None:
         df_comparar = pd.DataFrame()
 
         df_comparar['target_original'] = la_target
-        df_comparar['prediccion_RandomForestRegressor'] = rf_prediction
-        df_comparar['prediccion_DecisionTreeRegressor'] = tree_prediction
+        df_comparar['RandomForestRegressor'] = rf_prediction
+        df_comparar['DecisionTreeRegressor'] = tree_prediction
         
         
         st.write("Comparación de predicciones")
