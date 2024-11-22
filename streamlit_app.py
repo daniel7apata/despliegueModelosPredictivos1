@@ -174,10 +174,10 @@ if uploaded_file is not None:
                 mean_squared_error(la_target, best_rf_prediction)
             ],
             'MAPE': [
-                mean_absolute_percentage_error(la_target, tree_prediction),
-                mean_absolute_percentage_error(la_target, best_tree_prediction),
-                mean_absolute_percentage_error(la_target, rf_prediction),
-                mean_absolute_percentage_error(la_target, best_rf_prediction)
+                mean_absolute_percentage_error(la_target, tree_prediction)* 100:.2f,
+                mean_absolute_percentage_error(la_target, best_tree_prediction)* 100:.2f,
+                mean_absolute_percentage_error(la_target, rf_prediction)* 100:.2f,
+                mean_absolute_percentage_error(la_target, best_rf_prediction* 100:.2f)
             ],
             'RMSE': [
                 root_mean_squared_error(la_target, tree_prediction),
