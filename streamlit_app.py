@@ -193,6 +193,8 @@ if uploaded_file is not None:
             ]
         })
 
+        st.dataframe(df_metricas)
+
 
 
     except Exception as e:
