@@ -152,28 +152,21 @@ if uploaded_file is not None:
         df_comparar['Optimizado_DecisionTreeRegressor'] = best_tree_prediction
         df_comparar['RandomForestRegressor'] = rf_prediction
         df_comparar['Optimizado_RandomForestRegressor'] = best_rf_prediction
-
-        
-        
+       
         st.write("Comparación de predicciones")
         st.dataframe(df_comparar)
-
-
-
-
-
-        st.write("Métricas DecisionTreeRegressor")
-        mae = mean_absolute_error(la_target, tree_prediction)
-        mse = mean_squared_error(la_target, tree_prediction)
-        mape = mean_absolute_percentage_error(la_target, tree_prediction)
-        rmse = mean_squared_error(la_target, tree_prediction, squared=False)
-        r2 = r2_score(la_target, tree_prediction)
         
-        st.write(f"MAE: {mae}")
-        st.write(f"MSE: {mse}")
-        st.write(f"MAPE: {mape * 100:.2f}%")
-        st.write(f"RMSE: {rmse}")
-        st.write(f"R²: {r2}")
+        st.write("Métricas")
+
+ 
+        df_metricas = pd.DataFrame({
+            'Modelo': ['DecisionTreeRegressor', 'Optimizado_DecisionTreeRegressor', 'RandomForestRegressor', 'Optimizado_RandomForestRegressor'],
+            'MAE': [mean_absolute_error(la_target, tree_prediction), mean_absolute_error(la_target, best_tree_prediction), mean_absolute_error(la_target, rf_prediction) mean_absolute_error(la_target, best_rf_prediction)],
+            'MSE': [mean_squared_error(la_target, tree_prediction), mean_squared_error(la_target, best_tree_prediction), mean_squared_error(la_target, rf_prediction), mean_squared_error(la_target, best_rf_prediction)],
+            'MAPE': [mean_absolute_percentage_error(la_target, tree_prediction), mean_absolute_percentage_error(la_target, best_tree_prediction), mean_absolute_percentage_error(la_target, rf_prediction), mean_absolute_percentage_error(la_target, best_rf_prediction)],
+            'RMSE': [mean_squared_error(la_target, tree_prediction, squared=False), mean_squared_error(la_target, best_tree_prediction, squared=False), mean_squared_error(la_target, rf_prediction, squared=False), mean_squared_error(la_target, best_rf_prediction, squared=False)],
+            'R²': [r2_score(la_target, tree_prediction), r2_score(la_target, best_tree_prediction), r2_score(la_target, rf_prediction), r2_score(la_target, best_rf_prediction)]
+        })
 
 
     except Exception as e:
