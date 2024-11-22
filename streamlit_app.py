@@ -108,8 +108,13 @@ if uploaded_file is not None:
         
         
         #Traer modelos ya entrenados
+        tree_model = joblib.load('tree_model.pkl')
+        rf_model = joblib.load('rf_model.pkl')
+        LogisticRegression = joblib.load('LogisticRegression.pkl')
+        
         best_model_tree = joblib.load('best_model_tree.pkl')
         best_model_rf = joblib.load('best_model_rf.pkl')
+        
         
         
         
@@ -126,8 +131,13 @@ if uploaded_file is not None:
         
         
         #Realizar prediccion
-        tree_prediction = best_model_tree.predict(las_features)
-        rf_prediction = best_model_rf.predict(las_features)
+        tree_prediction = tree_model.predict(las_features)
+        rf_prediction = rf_model.predict(las_features)
+        LogisticRegression_prediction = LogisticRegression.predict(las_features)
+        
+        best_tree_prediction = best_model_tree.predict(las_features)
+        best_rf_prediction = best_model_rf.predict(las_features)
+        
         
         
         #Mostrar predicción
@@ -135,8 +145,12 @@ if uploaded_file is not None:
         df_comparar = pd.DataFrame()
 
         df_comparar['target_original'] = la_target
-        df_comparar['RandomForestRegressor'] = rf_prediction
+        df_comparar['LogisticRegression'] = LogisticRegression_prediction
         df_comparar['DecisionTreeRegressor'] = tree_prediction
+        df_comparar['RandomForestRegressor'] = rf_prediction
+        df_comparar['Optimizado_DecisionTreeRegressor'] = best_tree_prediction
+        df_comparar['Optimizado_RandomForestRegressor'] = best_rf_prediction
+
         
         
         st.write("Comparación de predicciones")
