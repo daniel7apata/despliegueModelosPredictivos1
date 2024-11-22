@@ -157,6 +157,23 @@ if uploaded_file is not None:
         st.dataframe(df_comparar)
 
 
+
+
+
+        st.write("Métricas DecisionTreeRegressor")
+        mae = mean_absolute_error(la_target, tree_prediction)
+        mse = mean_squared_error(la_target, tree_prediction)
+        mape = mean_absolute_percentage_error(la_target, tree_prediction)
+        rmse = mean_squared_error(la_target, tree_prediction, squared=False)
+        r2 = r2_score(la_target, tree_prediction)
+        
+        st.write(f"MAE: {mae}")
+        st.write(f"MSE: {mse}")
+        st.write(f"MAPE: {mape * 100:.2f}%")
+        st.write(f"RMSE: {rmse}")
+        st.write(f"R²: {r2}")
+
+
     except Exception as e:
         st.error(f"Hubo un error al leer el archivo: {e}")
 else:
