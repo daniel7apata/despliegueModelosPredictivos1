@@ -121,7 +121,7 @@ if uploaded_file is not None:
         st.write("Las columnas features")
         st.dataframe(las_features)
         
-        st.write("Las columnas target")
+        st.write("La columna target")
         st.dataframe(la_target)
         
         
@@ -133,9 +133,11 @@ if uploaded_file is not None:
         #Mostrar predicción
         
         df_comparar = pd.DataFrame()
-        
+
+        df_comparar['target_original'] = la_target
         df_comparar['prediccion_RandomForestRegressor'] = rf_prediction
         df_comparar['prediccion_DecisionTreeRegressor'] = tree_prediction
+        
         
         st.write("Comparación de predicciones")
         st.dataframe(df_comparar)
