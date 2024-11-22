@@ -174,10 +174,10 @@ if uploaded_file is not None:
                 mean_squared_error(la_target, best_rf_prediction)
             ],
             'MAPE': [
-                mean_absolute_percentage_error(la_target, tree_prediction)* 100:.2f,
-                mean_absolute_percentage_error(la_target, best_tree_prediction)* 100:.2f,
-                mean_absolute_percentage_error(la_target, rf_prediction)* 100:.2f,
-                mean_absolute_percentage_error(la_target, best_rf_prediction* 100:.2f)
+                mean_absolute_percentage_error(la_target, tree_prediction),
+                mean_absolute_percentage_error(la_target, best_tree_prediction),
+                mean_absolute_percentage_error(la_target, rf_prediction),
+                mean_absolute_percentage_error(la_target, best_rf_prediction)
             ],
             'RMSE': [
                 root_mean_squared_error(la_target, tree_prediction),
@@ -192,6 +192,13 @@ if uploaded_file is not None:
                 r2_score(la_target, best_rf_prediction)
             ]
         })
+        
+        # Convertir el MAPE a porcentaje con formato de dos decimales
+        df_metricas['MAPE (%)'] = (df_metricas['MAPE'] * 100).map('{:.2f}'.format)
+        
+        # EliminaR la columna MAPE original
+        df_metricas = df_metricas.drop(columns=['MAPE'])
+
 
         st.dataframe(df_metricas)
 
